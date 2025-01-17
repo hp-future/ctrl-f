@@ -1,0 +1,33 @@
+{
+  "name": "ctrl-f",
+  "version": "1.0.0",
+  "description": "使用javascript模拟浏览器的ctrl+f查找功能",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [
+    "ctrl+f",
+    "search"
+  ],
+  "author": {
+    "name": "hp-future",
+    "email": "h15713637731@163.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hp-future/ctrl-f.git"
+  },
+  "homepage": "https://github.com/hp-future/ctrl-f",
+  "license": "MIT",
+  "dependencies": {
+    "react": "18",
+    "react-dom": "18"
+  },
+  "devDependencies": {
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  }
+}
