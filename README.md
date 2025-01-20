@@ -36,7 +36,14 @@ eles.forEach((ele) => {
   range.setEnd(startNode, index + value.length);
   const { width, height, top, left } = range.getBoundingClientRect();
   const span = document.createElement('span');
-  span.style.cssText = `width:${width}px;height:${height}px;position:absolute;top:${top}px;left:${left}px;background-color:rgb(253 253 6 / 50%);`;
+  span.style.cssText = `
+    width:${width}px;
+    height:${height}px;
+    position:absolute;
+    top:${top + contentContainer.scrollTop}px;
+    left:${left}px;
+    background-color:rgb(253 253 6 / 50%);
+  `;
   markContainer.appendChild(span);
   marks.push(span);
 });
