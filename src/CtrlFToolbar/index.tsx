@@ -20,7 +20,7 @@ export default function CtrlFToolbar(props: React.PropsWithChildren) {
   const markHandle = (value: string) => {
     const contentEle = contentRef.current!;
     // 清空所有mark标记
-    markContainerRef.current?.replaceChildren();
+    markContainerRef.current!.innerHTML = '';
     if (!value) return;
 
     // 通过xpath查找相关节点
@@ -32,6 +32,7 @@ export default function CtrlFToolbar(props: React.PropsWithChildren) {
       eles.push(result);
       result = targetElements.iterateNext() as HTMLElement;
     }
+
     // 创建mark标记
     const marks: HTMLElement[] = [];
     eles.forEach((ele) => {
@@ -42,9 +43,17 @@ export default function CtrlFToolbar(props: React.PropsWithChildren) {
       range.setEnd(startNode, index + value.length);
       const { width, height, top, left } = range.getBoundingClientRect();
       const span = document.createElement('span');
-      span.style.cssText = `width:${width}px;height:${height}px;position:absolute;top:${top}px;left:${left}px;background-color:rgb(253 253 6 / 50%);`;
+      span.style.cssText = `
+        width:${width}px;
+        height:${height}px;
+        position:absolute;
+        top:${top + contentRef.current!.scrollTop}px;
+        left:${left}px;
+        background-color:rgb(253 253 6 / 50%);
+      `;
       markContainerRef.current?.appendChild(span);
       marks.push(span);
+      
     });
     setIndex(0);
     setMarkEles(marks);
